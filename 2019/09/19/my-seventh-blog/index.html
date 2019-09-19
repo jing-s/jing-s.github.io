@@ -6,24 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="//jlx1999.top">
-  <title>web编程问题记录 | Solitude的博客</title>
+  <title>linux下main函数中参数arg和char*argv[]解析 | Solitude的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录平时遇见的problems">
-<meta name="keywords" content="笔记">
+  <meta name="description" content="linux下main函数中参数arg和char*argv[]解析">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web编程问题记录">
-<meta property="og:url" content="//jlx1999.top/2019/09/17/my-fourth-blog/index.html">
+<meta property="og:title" content="linux下main函数中参数arg和char*argv[]解析">
+<meta property="og:url" content="//jlx1999.top/2019/09/19/my-seventh-blog/index.html">
 <meta property="og:site_name" content="Solitude的博客">
-<meta property="og:description" content="记录平时遇见的problems">
+<meta property="og:description" content="linux下main函数中参数arg和char*argv[]解析">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="//jlx1999.top/assets/blogImg/fourth_1.png">
-<meta property="og:image" content="//jlx1999.top/assets/blogImg/fourth_2.png">
-<meta property="og:image" content="//jlx1999.top/assets/blogImg/fourth_3.png">
-<meta property="og:updated_time" content="2019-09-17T11:04:30.207Z">
+<meta property="og:image" content="//jlx1999.top/assets/blogImg/seventh_1.png">
+<meta property="og:image" content="//jlx1999.top/assets/blogImg/seventh_2.png">
+<meta property="og:updated_time" content="2019-09-19T01:13:19.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="web编程问题记录">
-<meta name="twitter:description" content="记录平时遇见的problems">
-<meta name="twitter:image" content="//jlx1999.top/assets/blogImg/fourth_1.png">
+<meta name="twitter:title" content="linux下main函数中参数arg和char*argv[]解析">
+<meta name="twitter:description" content="linux下main函数中参数arg和char*argv[]解析">
+<meta name="twitter:image" content="//jlx1999.top/assets/blogImg/seventh_1.png">
   
     <link rel="alternative" href="/atom.xml" title="Solitude的博客" type="application/atom+xml">
   
@@ -155,29 +154,29 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-my-fourth-blog" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-my-seventh-blog" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      web编程问题记录
+      linux下main函数中参数arg和char*argv[]解析
     </h1>
   
 
         
-        <a href="/2019/09/17/my-fourth-blog/" class="archive-article-date">
-  	<time datetime="2019-09-17T10:55:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
+        <a href="/2019/09/19/my-seventh-blog/" class="archive-article-date">
+  	<time datetime="2019-09-19T00:36:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>记录平时遇见的problems</p>
+        <p>linux下main函数中参数arg和char*argv[]解析</p>
 <a id="more"></a>
-<p>为什么eclipse中启动tomcat后，浏览器中出现404,而直接启动tomcat却正常?<br>问题描述：<br>　　tomcat压缩包加压后，启动lib文件夹下面的startup.bat，在浏览器中输入<a href="http://localhost:8080/后出现熟悉的界面。" target="_blank" rel="noopener">http://localhost:8080/后出现熟悉的界面。</a><br>　　但是在eclipse中，jsp可以正常运行，然而在浏览器中输入<a href="http://localhost:8080/后，出现404界面。" target="_blank" rel="noopener">http://localhost:8080/后，出现404界面。</a><br>解决方案：<br>    1.删除该tomcat下部署的项目<br>    2.重新配置tomcat<br>    3.双击下面红色圈住部分<br>    <img src="/assets/blogImg/fourth_1.png" alt=" "><br>    双击之后显示如下界面：<br>    <img src="/assets/blogImg/fourth_2.png" alt=" "><br>    修改后如下:<br>    <img src="/assets/blogImg/fourth_3.png" alt=" "><br>总结：<br>　　1. Use workspace metadata (does not modify Tomcat installation)。<br>　　2. Use Tomcat installation (take control of Tomcat Installation)。<br>　　第一个选项表示使用当前workspace的metadata路径，它一般会将输出文件保存至workspace目录下，第二个表示输出文件保存至tomcat安装目录下。<br>    Deploy Path：表示发布项目的目录：改为webapps。</p>
+<p>前言：<br>在学习计组的时候，基本上都要在linux下编程，而下面这个：int main(int argc,char* argv[])肯定都见过，下面讲讲对于argc和argv的理解。<br>例子解析：<br>1.argc：它是一个整型数据，指的是往主函数传入参数的个数。<br>2.argv[]：它是一个指针数组，即每个数组元素都为一个指针，即每个数组元素都是一个地址变量。<br>3.每个元素存储的是字符串的首地址（字符串本身就是它的首地址）<br>下面来个具体例子：<br>编译好main.c这个文件后生成可执行文件main，输入指令./main Hello World<br>这时argc为3，分别为main，Hello，World；<br>此时的argv[0]=“main”；<br>argv[1]=“Hello”；<br>argv[2]=“World”；<br>再比如说我们想打印第二个参数中的字符’o’和第三个参数中的字符’o’<br>那就只要printf(“%c,%c”,argv[1][4],argv[2][2]);即可<br><img src="/assets/blogImg/seventh_1.png" alt=" "><br><img src="/assets/blogImg/seventh_2.png" alt=" "></p>
 
       
 
@@ -191,7 +190,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -247,7 +246,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://jlx1999.top/2019/09/17/my-fourth-blog/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://jlx1999.top/2019/09/19/my-seventh-blog/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -261,18 +260,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/09/18/my-fifth-blog/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Oracle笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/08/my-third-blog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">myeclipse2019-4破解教程</div>
+    <a href="/2019/09/18/mu-sixth-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ONE</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -302,7 +292,7 @@ var _hmt = _hmt || [];
   
 
   
-  <div id="SOHUCS" sid="my-fourth-blog" ></div> 
+  <div id="SOHUCS" sid="my-seventh-blog" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
